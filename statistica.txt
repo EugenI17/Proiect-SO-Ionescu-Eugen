@@ -1,0 +1,11 @@
+nume fisier: dwsample-bmp-640.bmp
+inaltime: 427
+lungime: 640
+dimensiune: 819896
+identificatorul utilizatorului: 502
+timpul ultimei modificari: Sun Nov 12 16:46:14 2023
+
+contorul de legaturi: 1
+drepturi de acces user: RW-
+drepturi de acces grup: R--
+drepturi de acces altii: R--
