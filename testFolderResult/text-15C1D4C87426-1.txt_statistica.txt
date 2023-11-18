@@ -1,0 +1,8 @@
+nume fisier: testFolder/text-15C1D4C87426-1.txt
+dimensiune: 4
+identificatorul utilizatorului: 502
+timpul ultimei modificari: Sat Nov 18 17:51:24 2023
+contorul de legaturi: 1
+drepturi de acces user: RW-
+drepturi de acces grup: R--
+drepturi de acces altii: R--

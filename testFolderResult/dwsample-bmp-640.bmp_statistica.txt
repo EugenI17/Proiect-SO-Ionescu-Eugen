@@ -1,0 +1,10 @@
+nume fisier: testFolder/dwsample-bmp-640.bmp
+inaltime: 427
+lungime: 640
+dimensiune: 819896
+identificatorul utilizatorului: 502
+timpul ultimei modificari: Sat Nov 18 17:52:13 2023
+contorul de legaturi: 1
+drepturi de acces user: RW-
+drepturi de acces grup: R--
+drepturi de acces altii: R--
