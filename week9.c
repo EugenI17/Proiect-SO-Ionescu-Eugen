@@ -184,8 +184,8 @@ int main(int argc, char *argv[]) {
                 continue;
             }
 
-            if (pid == 0) { // Primul proces copil
-                close(fd1[0]); // Închidem capătul de citire al primului pipe
+            if (pid == 0) {
+                close(fd1[0]);
                 int isBmp = S_ISREG(fileStat.st_mode) && strstr(entry->d_name, ".bmp") != NULL;
                 int isDir = S_ISDIR(fileStat.st_mode);
                 int isLnk = S_ISLNK(fileStat.st_mode);
