@@ -1,0 +1,8 @@
+nume fisier: testFolder/test.txt
+dimensiune: 22
+identificatorul utilizatorului: 502
+timpul ultimei modificari: Thu Dec  7 23:01:06 2023
+contorul de legaturi: 1
+drepturi de acces user: RW-
+drepturi de acces grup: R--
+drepturi de acces altii: R--
