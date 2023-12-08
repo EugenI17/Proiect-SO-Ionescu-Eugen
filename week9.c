@@ -150,14 +150,15 @@ int main(int argc, char *argv[]) {
     }
 
     struct dirent *entry;
-    int totalSentences = 0;
 
     while ((entry = readdir(dir)) != NULL) {
         if (strcmp(entry->d_name, ".") == 0 || strcmp(entry->d_name, "..") == 0) {
             continue;
         }
 
+        int totalSentences = 0;
         char inputPath[1024], outputPath[1024];
+
         sprintf(inputPath, "%s/%s", argv[1], entry->d_name);
         sprintf(outputPath, "%s/%s_statistica.txt", argv[2], entry->d_name);
 
@@ -254,10 +255,11 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
+if( strstr(entry->d_name, ".bmp") == NULL)
+        printf("In fisierul %s au fost identificate in total %d propozitii corecte care contin caracterul %c\n", entry->d_name, totalSentences, argv[3][0]);
     }
 
     closedir(dir);
-    printf("Au fost identificate in total %d propozitii corecte care contin caracterul %c\n", totalSentences, argv[3][0]);
 
     return EXIT_SUCCESS;
 }
