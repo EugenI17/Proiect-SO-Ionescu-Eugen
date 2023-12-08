@@ -8,7 +8,7 @@ fi
 caracter=$1
 contor=0
 
-while IFS= read -r linie; do
+while line_exists= read -r linie; do
     if [[ $linie =~ ^[A-Z] && $linie =~ [$caracter] && $linie =~ [\.!?]$ && ! $linie =~ ,\ și ]]; then
         ((contor++))
     fi
