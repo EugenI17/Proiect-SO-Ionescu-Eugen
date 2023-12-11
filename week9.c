@@ -158,7 +158,6 @@ int main(int argc, char *argv[]) {
 
         int totalSentences = 0;
         char inputPath[1024], outputPath[1024];
-
         sprintf(inputPath, "%s/%s", argv[1], entry->d_name);
         sprintf(outputPath, "%s/%s_statistica.txt", argv[2], entry->d_name);
 
@@ -167,6 +166,10 @@ int main(int argc, char *argv[]) {
             perror("Error getting file stats");
             continue;
         }
+        int isBmp = S_ISREG(fileStat.st_mode) && strstr(entry->d_name, ".bmp") != NULL;
+        int isDir = S_ISDIR(fileStat.st_mode);
+        int isLnk = S_ISLNK(fileStat.st_mode);
+        writeStatistics(inputPath, outputPath, isBmp, isDir, isLnk);
 
         if (S_ISREG(fileStat.st_mode)) {
             int fd1[2], fd2[2];
@@ -187,12 +190,6 @@ int main(int argc, char *argv[]) {
 
             if (pid == 0) {
                 close(fd1[0]);
-                int isBmp = S_ISREG(fileStat.st_mode) && strstr(entry->d_name, ".bmp") != NULL;
-                int isDir = S_ISDIR(fileStat.st_mode);
-                int isLnk = S_ISLNK(fileStat.st_mode);
-
-                writeStatistics(inputPath, outputPath, isBmp, isDir, isLnk);
-
                 int filefd = open(inputPath, O_RDONLY);
                 if (filefd < 0) {
                     perror("Error opening file");
@@ -242,9 +239,11 @@ int main(int argc, char *argv[]) {
 
                         int status = 0;
                         waitpid(pid2, &status, 0);
-                        int count = 0;
+                        char count[4];
                         read(fd2[0], &count, sizeof(count));
-                        totalSentences += count;
+                        totalSentences += atoi(count);
+                        if( strstr(entry->d_name, ".bmp") == NULL)
+                            printf("In fisierul %s au fost identificate in total %d propozitii corecte care contin caracterul %c\n", entry->d_name, totalSentences, argv[3][0]);
 
                         close(fd2[0]);
                     }
@@ -255,9 +254,8 @@ int main(int argc, char *argv[]) {
                 }
             }
         }
-if( strstr(entry->d_name, ".bmp") == NULL)
-        printf("In fisierul %s au fost identificate in total %d propozitii corecte care contin caracterul %c\n", entry->d_name, totalSentences, argv[3][0]);
-    }
+
+}
 
     closedir(dir);
 

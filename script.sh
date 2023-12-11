@@ -14,4 +14,4 @@ while line_exists= read -r linie; do
     fi
 done
 
-echo $contor
+printf "%04d\n" $contor
